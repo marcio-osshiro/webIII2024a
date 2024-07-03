@@ -18,4 +18,33 @@ class CategoriaController extends Controller
         $categorias = Categoria::all();
         return view('categoria', compact('categorias'));
     }
+
+    function novo() {
+        $categoria = new Categoria();
+        $categoria->id = 0;
+        return view('frm_categoria', compact('categoria'));
+    }
+
+    function salvar(Request $request) {
+        if ($request->input('id') == 0) {
+            $categoria = new Categoria();
+        } else {
+            $categoria = Categoria::find($request->input('id'));
+        }
+        $categoria->descricao = $request->input('descricao');
+        $categoria->save();
+        return redirect('/categoria');
+    }
+
+    function excluir($id) {
+        $categoria = Categoria::find($id);
+        $categoria->delete();
+        return redirect('/categoria');
+    }
+
+    function editar($id) {
+        $categoria = Categoria::find($id);
+        return view("frm_categoria", compact('categoria'));
+
+    }
 }
