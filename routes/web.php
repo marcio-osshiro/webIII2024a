@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\NoticiaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +27,8 @@ Route::get('/categoria/novo', [CategoriaController::class, 'novo']);
 Route::post('/categoria/salvar', [CategoriaController::class, 'salvar']);
 Route::get('/categoria/excluir/{id}', [CategoriaController::class, 'excluir']);
 Route::get('/categoria/editar/{id}', [CategoriaController::class, 'editar']);
+
+
+Route::get('/noticia', [NoticiaController::class, 'listar']);
+Route::get('/noticia/novo', [NoticiaController::class, 'novo']);
+Route::post('/noticia/salvar', [NoticiaController::class, 'salvar']);
