@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Noticia;
+use App\Models\Categoria;
 
 class NoticiaController extends Controller
 {
@@ -16,7 +17,10 @@ class NoticiaController extends Controller
     function novo() {
         $noticia = new Noticia();
         $noticia->id = 0;
-        return view('frm_noticia', compact('noticia'));
+
+        $categorias = Categoria::orderBy('descricao')->get();
+
+        return view('frm_noticia', compact('noticia', 'categorias'));
     }
 
     function salvar(Request $request) {
@@ -32,5 +36,19 @@ class NoticiaController extends Controller
         $noticia->categoria_id = $request->input('categoria_id');
         $noticia->save();
         return redirect('/noticia');
+    }
+
+    function editar($id) {
+        $noticia = Noticia::find($id);
+
+        $categorias = Categoria::orderBy('descricao')->get();
+
+        return view('frm_noticia', compact('noticia', 'categorias'));
+    }
+
+    function excluir($id) {
+        $noticia = Noticia::find($id);
+        $noticia->delete();
+        return redirect('/noticia');        
     }
 }

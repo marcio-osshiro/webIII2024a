@@ -16,6 +16,8 @@
       <th scope="col">Data</th>
       <th scope="col">Autor</th>
       <th scope="col">Título</th>
+      <th scope="col">Categoria</th>
+
       <th scope="col">Excluir</th>
       <th scope="col">Editar</th>
     </tr>
@@ -28,6 +30,7 @@
         <td>{{ $noticia->data }}</td>
         <td>{{ $noticia->autor }}</td>
         <td>{{ $noticia->titulo }}</td>
+        <td>{{ $noticia->categoria->descricao }}</td>
         <td><a href="/noticia/excluir/{{$noticia->id}}" class="btn btn-danger">-</a></td>
         <td><a href="/noticia/editar/{{$noticia->id}}" class="btn btn-primary">+</a></td>
         </tr>

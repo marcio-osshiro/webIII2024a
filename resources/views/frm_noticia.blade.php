@@ -34,7 +34,15 @@
     </div>
     <div class="mb-3">
         <label for="categoria_id" class="form-label">Categoria</label>
-        <input type="number" class="form-control" id="categoria_id" name="categoria_id" value="{{$noticia->categoria_id}}">
+        <select class="form-control" name="categoria_id" id="categoria_id">
+            @foreach($categorias as $categoria)
+                <option 
+                    @if ($categoria->id == $noticia->categoria_id) 
+                        selected
+                    @endif
+                value="{{$categoria->id}}">{{$categoria->descricao}}</option>
+            @endforeach
+        </select>
     </div>
 
     <button type="submit" class="btn btn-primary">Salvar</button>
