@@ -26,6 +26,11 @@ class CategoriaController extends Controller
     }
 
     function salvar(Request $request) {
+        $validatedData = $request->validate([
+            'descricao' => ['required', 'min:10'],
+        ]);
+        
+
         if ($request->input('id') == 0) {
             $categoria = new Categoria();
         } else {
