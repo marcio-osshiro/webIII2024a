@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Categoria;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\CategoriaRequest;
 
 class CategoriaController extends Controller
 {
@@ -25,7 +26,18 @@ class CategoriaController extends Controller
         return view('frm_categoria', compact('categoria'));
     }
 
-    function salvar(Request $request) {
+    function salvar(CategoriaRequest $request) {
+        if ($request->input('id') == 0) {
+            $categoria = new Categoria();
+        } else {
+            $categoria = Categoria::find($request->input('id'));
+        }
+        $categoria->descricao = $request->input('descricao');
+        $categoria->save();
+        return redirect('/categoria');
+    }
+
+    function salvar1(Request $request) {
         $validatedData = $request->validate([
             'descricao' => ['required', 'min:10'],
         ]);
