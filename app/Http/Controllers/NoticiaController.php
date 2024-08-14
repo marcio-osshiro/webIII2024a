@@ -38,10 +38,6 @@ class NoticiaController extends Controller
             $vetor_arquivo = explode('/', $caminho_arquivo);
             $noticia->imagem = $vetor_arquivo[2];
         }
-        //var_dump($arquivo_salvo);
-        //die();
-
-
 
         $noticia->data = $request->input('data');
         $noticia->autor = $request->input('autor');

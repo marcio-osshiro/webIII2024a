@@ -32,6 +32,16 @@ class CategoriaController extends Controller
         } else {
             $categoria = Categoria::find($request->input('id'));
         }
+        if ($request->hasFile("arquivo")) {
+            $arquivo = $request->file("arquivo");
+
+            // salva na pasta STORAGE/APP + PUBLIC/IMAGENS
+            $caminho_arquivo = $arquivo->store('public/imagens');
+
+            $vetor_arquivo = explode('/', $caminho_arquivo);
+            $categoria->imagem = $vetor_arquivo[2];
+        }
+
         $categoria->descricao = $request->input('descricao');
         $categoria->save();
         return redirect('/categoria');

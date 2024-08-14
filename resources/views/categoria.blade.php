@@ -8,6 +8,8 @@
       <tr>
         <th scope="col">ID</th>
         <th scope="col">Descrição</th>
+        <th scope="col">Imagem</th>
+
         <th scope="col">Excluir</th>
         <th scope="col">Editar</th>
       </tr>
@@ -18,6 +20,11 @@
           <tr>
           <th scope="row">{{ $categoria->id }}</th>
           <td>{{ $categoria->descricao }}</td>
+          <td>
+          @if($categoria->imagem != "")
+            <img src="/storage/imagens/{{$categoria->imagem}}" style="width: 40px">
+          @endif
+          </td>
           <td><a href="/categoria/excluir/{{$categoria->id}}" class="btn btn-danger">-</a></td>
           <td><a href="/categoria/editar/{{$categoria->id}}" class="btn btn-primary">+</a></td>
           </tr>
