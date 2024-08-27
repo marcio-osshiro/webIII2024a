@@ -118,6 +118,12 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/categoria">Categoria</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/venda/listar">Vendas1</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/venda/listar2">Vendas2</a>
+        </li>
       </ul>
     </div>
   </div>
