@@ -112,18 +112,33 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/noticia">Noticia</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/categoria">Categoria</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/venda/listar">Vendas1</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/venda/listar2">Vendas2</a>
-        </li>
+        @auth
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/noticia">Noticia</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/categoria">Categoria</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/venda/listar">Vendas1</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/venda/listar2">Vendas2</a>
+          </li>
+          <li class="nav-item">
+            <form action="/logout" method="POST">
+              @csrf
+              <button type="submit" class="nav-link active">Sair</button>
+            </form>
+          </li>
+        @endauth
+ 
+        @guest
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/login">Entrar</a>
+          </li>
+        @endguest
+
       </ul>
     </div>
   </div>
