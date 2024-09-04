@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\NoticiaController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\VendaController;
@@ -37,6 +38,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/categoria/salvar', [CategoriaController::class, 'salvar']);
     Route::get('/categoria/excluir/{id}', [CategoriaController::class, 'excluir']);
     Route::get('/categoria/editar/{id}', [CategoriaController::class, 'editar']);
+    Route::get('/categoria/pdf', [CategoriaController::class, 'pdf']);
     
     
     Route::get('/noticia', [NoticiaController::class, 'listar']);
@@ -61,6 +63,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/venda/salvar2', [VendaController2::class, 'salvar2']);
     Route::get('/venda/excluir2/{id}', [VendaController2::class, 'excluir2']);
         
+    Route::get('/cliente/listar', [ClienteController::class, 'listar']);
+    Route::get('/cliente/mensagem/{id}', [ClienteController::class, 'mensagem']);
+    Route::post('/cliente/enviarMensagem', [ClienteController::class, 'enviarMensagem']);
+
 });
 
 require __DIR__.'/auth.php';

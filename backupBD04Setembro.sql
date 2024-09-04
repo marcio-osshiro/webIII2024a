@@ -5,7 +5,7 @@
 -- Dumped from database version 14.13 (Ubuntu 14.13-0ubuntu0.22.04.1)
 -- Dumped by pg_dump version 14.13 (Ubuntu 14.13-0ubuntu0.22.04.1)
 
--- Started on 2024-08-28 10:18:58 -04
+-- Started on 2024-09-04 09:47:10 -04
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -68,7 +68,8 @@ ALTER SEQUENCE public.categoria_id_seq OWNED BY public.categoria.id;
 
 CREATE TABLE public.cliente (
     id integer NOT NULL,
-    nome character varying(100)
+    nome character varying(100),
+    email character varying(100)
 );
 
 
@@ -594,12 +595,12 @@ INSERT INTO public.categoria VALUES (14, 'Esporte Espetacular', 'ckG3vbz6jybW8Hd
 -- Data for Name: cliente; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.cliente VALUES (1, 'Antonio');
-INSERT INTO public.cliente VALUES (2, 'Bernardo');
-INSERT INTO public.cliente VALUES (3, 'Cleber');
-INSERT INTO public.cliente VALUES (4, 'Douglas');
-INSERT INTO public.cliente VALUES (5, 'Eugenio');
-INSERT INTO public.cliente VALUES (6, 'Francisco');
+INSERT INTO public.cliente VALUES (2, 'Bernardo', NULL);
+INSERT INTO public.cliente VALUES (3, 'Cleber', NULL);
+INSERT INTO public.cliente VALUES (4, 'Douglas', NULL);
+INSERT INTO public.cliente VALUES (5, 'Eugenio', NULL);
+INSERT INTO public.cliente VALUES (6, 'Francisco', NULL);
+INSERT INTO public.cliente VALUES (1, 'Antonio', 'marcio.osshiro@ifms.edu.br');
 
 
 --
@@ -658,6 +659,7 @@ INSERT INTO public.noticia VALUES (15, '2020-01-31', 'Sandra Annenberg', 'Pantan
 -- Data for Name: password_reset_tokens; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO public.password_reset_tokens VALUES ('marcio.osshiro@ifms.edu.br', '$2y$12$1FlnNA42GSGpiXqyDfCKYeQArrX9ekoFCnfAvP0E3oPASWWDR/2Na', '2024-09-03 15:01:34');
 
 
 --
@@ -691,6 +693,7 @@ INSERT INTO public.produto VALUES (8, 'Limao', 10.00);
 --
 
 INSERT INTO public.users VALUES (1, 'Administrador', 'admin@gmail.com', NULL, '$2y$12$rwsgFTkOwluPiJP1U9TpMuWB37yLw6jKvt.yAmVUOzFpnF6SHXlO6', NULL, '2024-08-28 13:56:32', '2024-08-28 13:56:32');
+INSERT INTO public.users VALUES (2, 'prof. Osshiro', 'marcio.osshiro@ifms.edu.br', NULL, '$2y$12$dzUNHXEUi1RZUsJuxlEMRu.chtsxk1mCUNVyDutmSqTpfVY8v1yOq', NULL, '2024-09-03 01:05:05', '2024-09-03 01:05:05');
 
 
 --
@@ -792,7 +795,7 @@ SELECT pg_catalog.setval('public.produto_id_seq', 8, true);
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 1, true);
+SELECT pg_catalog.setval('public.users_id_seq', 2, true);
 
 
 --
@@ -965,7 +968,7 @@ ALTER TABLE ONLY public.item_venda
     ADD CONSTRAINT fk_venda FOREIGN KEY (venda_id) REFERENCES public.venda(id) ON DELETE CASCADE NOT VALID;
 
 
--- Completed on 2024-08-28 10:18:58 -04
+-- Completed on 2024-09-04 09:47:11 -04
 
 --
 -- PostgreSQL database dump complete

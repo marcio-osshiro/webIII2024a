@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Categoria;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\CategoriaRequest;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class CategoriaController extends Controller
 {
@@ -73,5 +74,12 @@ class CategoriaController extends Controller
         $categoria = Categoria::find($id);
         return view("frm_categoria", compact('categoria'));
 
+    }
+
+    function pdf() {
+        $categorias = Categoria::orderBy('descricao')->get();
+        //return view("relatorio_pdf", compact('categorias'));
+        $pdf = Pdf::loadView('relatorio_pdf', compact('categorias'));
+        return $pdf->download('relatorio_categorias.pdf'); 
     }
 }

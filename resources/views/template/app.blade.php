@@ -126,6 +126,9 @@
             <a class="nav-link active" aria-current="page" href="/venda/listar2">Vendas2</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/cliente/listar">Cliente</a>
+          </li>
+          <li class="nav-item">
             <form action="/logout" method="POST">
               @csrf
               <button type="submit" class="nav-link active">Sair</button>
